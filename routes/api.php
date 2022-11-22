@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->post('/member/store', [MemberController::class, 'store']);
+Route::middleware('auth:sanctum')->get('/member/getmember', [MemberController::class, 'getmember']);
 
 Route::post('/login', [LoginController::class, 'index']);
 Route::get('/logout', [LoginController::class, 'logout']);

@@ -25,4 +25,12 @@ class MemberController extends Controller
             return response()->json('Post Gagal Disimpan');
         }
     }
+
+    public function getmember()
+    {
+        $members  = MemberModel::all();
+        return response([
+            $members
+        ]);
+    }
 }
