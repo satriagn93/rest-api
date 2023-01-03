@@ -57,4 +57,22 @@ class MemberController extends Controller
             return response()->json('Gagal Update');
         }
     }
+
+    public function storearray(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $memberData = $request->input();
+            // dd($memberData);
+            foreach ($memberData['data'] as $key => $value) {
+                $member = new MemberModel;
+                $member->name = $value['name'];
+                $member->hp = $value['hp'];
+                $member->email = $value['email'];
+                $member->gender = $value['gender'];
+                $member->address = $value['address'];
+                $member->save();
+            }
+            return response()->json(['message' => 'Members add successfully']);
+        }
+    }
 }
