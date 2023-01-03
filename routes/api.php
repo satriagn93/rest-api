@@ -22,6 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->post('/member/store', [MemberController::class, 'store']);
 Route::middleware('auth:sanctum')->get('/member/getmember', [MemberController::class, 'getmember']);
+Route::middleware('auth:sanctum')->get('/member/getmemberbyid/{id}', [MemberController::class, 'getmemberbyid']);
+Route::middleware('auth:sanctum')->post('/member/updatemember/{id}', [MemberController::class, 'update']);
 
 Route::post('/login', [LoginController::class, 'index']);
 Route::get('/logout', [LoginController::class, 'logout']);

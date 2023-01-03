@@ -33,4 +33,28 @@ class MemberController extends Controller
             $members
         ]);
     }
+
+    public function getmemberbyid($id)
+    {
+        $members = MemberModel::findOrFail($id);
+        return response([
+            $members
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $members = MemberModel::findOrFail($id);
+        $members->name        = $request->name;
+        $members->hp          = $request->hp;
+        $members->email       = $request->email;
+        $members->gender      = $request->gender;
+        $members->address     = $request->address;
+
+        if ($members->update()) {
+            return response()->json('Data member berhasil di Update');
+        } else {
+            return response()->json('Gagal Update');
+        }
+    }
 }
