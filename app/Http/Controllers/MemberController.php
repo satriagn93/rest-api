@@ -20,9 +20,9 @@ class MemberController extends Controller
 
         //jika berhasil maka simpan data dengan methode $post->save()
         if ($members->save()) {
-            return response()->json('Post Berhasil Disimpan');
+            return response()->json('Data Member Berhasil Disimpan');
         } else {
-            return response()->json('Post Gagal Disimpan');
+            return response()->json('Data Member Gagal Disimpan');
         }
     }
 
@@ -74,5 +74,14 @@ class MemberController extends Controller
             }
             return response()->json(['message' => 'Members add successfully']);
         }
+    }
+
+    public function destroy($id)
+    {
+        $member = MemberModel::where('id', $id)->first();
+        $member->delete();
+        return response()->json([
+            'success' => 'Data Successfully Deleted'
+        ], 200);
     }
 }
